@@ -8,7 +8,7 @@ const carouselRoutes = require('./routes/carousel')
 const listingRoutes = require('./routes/listings')
 const userRoutes = require('./routes/users')
 const uploadRoutes = require('./routes/upload')
-const simpleUploadRoutes = require('./routes/simpleupload')
+const simpleUploadRoutes = require('./routes/simpleUpload')
 const bookings = require('./routes/bookings')
 const multer =require('multer')
 
