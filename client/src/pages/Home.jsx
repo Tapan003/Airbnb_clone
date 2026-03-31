@@ -15,7 +15,7 @@ function Home() {
 
     const fetchCarousels = async () => {
         try {
-            const response = await fetch(`'${API_URL}'+'/api/carousels?page=home'`)
+            const response = await fetch(`${API_URL}/api/carousels?page=home`)
             const data = await response.json()
             {/*console.log(data)*/}
             setCarousels(data.carousels)
