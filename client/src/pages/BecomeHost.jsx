@@ -8,6 +8,9 @@ function BecomeHost() {
     const [step, setStep] = useState(1)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [file,setFile] = useState(null)
+
+    const API_URL = import.meta.env.VITE_API_URL
+
     // const [isAuthenticated, setIsAuthenticated] = useState(false)
     // const [isCheckingAuth, setIsCheckingAuth] = useState(true)
     // const [user, setUser] = useState(null)
@@ -214,7 +217,7 @@ function BecomeHost() {
             }
 
             // sending backend
-            const response = await fetch('http://localhost:5000/api/listings', {
+            const response = await fetch(`${API_URL}/api/listings`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

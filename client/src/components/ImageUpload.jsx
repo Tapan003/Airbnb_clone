@@ -8,6 +8,8 @@ function ImageUpload({ onImageUploaded, isMain = false, existingImage = null }) 
     const [isDragging, setIsDragging] = useState(false)
     const fileInputRef = useRef(null)
 
+    const API_URL = import.meta.env.VITE_API_URL
+
     const validateFile = (file) => {
         if (!file.type.startsWith('image/')) {
             setError('Please select an image file')
@@ -43,7 +45,7 @@ function ImageUpload({ onImageUploaded, isMain = false, existingImage = null }) 
             const formData = new FormData()
             formData.append('image', file)
 
-            const response = await fetch('http://localhost:5000/api/upload/image', {
+            const response = await fetch(`${API_URL}/api/upload/image`, {
                 method: 'POST',
                 body: formData
             })

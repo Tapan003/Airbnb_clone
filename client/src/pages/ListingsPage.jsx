@@ -19,6 +19,8 @@ function ListingsPage() {
     const guestPopupRef = useRef(null)
     const navigate = useNavigate()
 
+    const API_URL = import.meta.env.VITE_API_URL
+
     useEffect(() => {   
         fetchData()
     }, [id])
@@ -26,7 +28,7 @@ function ListingsPage() {
     const fetchData = async () => {
         setLoading(true)
         try {
-            const listingsRes = await fetch(`http://localhost:5000/api/listings/${id}`)
+            const listingsRes = await fetch(`${API_URL}/api/listings/${id}`)
             const listingsData = await listingsRes.json()
             setListings(listingsData)
         } catch (error) {
@@ -83,7 +85,7 @@ function ListingsPage() {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/bookings', {
+            const response = await fetch(`${API_URL}/api/bookings`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

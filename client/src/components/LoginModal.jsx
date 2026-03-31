@@ -10,6 +10,7 @@ function LoginModal({ isOpen, onClose }) {
     const [phoneNumber, setPhoneNumber] = useState('')
     const [country, setCountry] = useState('India')
     const [isOtpModalOpen, setIsOtpModalOpen] = useState(false)
+    const API_URL = import.meta.env.VITE_API_URL
 
     // if (!isOtpModalOpen) {
     //     document.body.style = 'hidden'
@@ -26,7 +27,7 @@ function LoginModal({ isOpen, onClose }) {
     }
 
     try {
-        const response = await fetch('http://localhost:5000/api/auth/send-otp', {
+        const response = await fetch(`${API_URL}/api/auth/send-otp`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

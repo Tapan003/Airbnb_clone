@@ -6,13 +6,15 @@ function Services() {
     const [loading, setLoading] = useState(true)
     const [carousels, setCarousels] = useState([])
 
+    const API_URL = import.meta.env.VITE_API_URL
+
     useEffect(() =>{
         fetchSliders()
     },[])
 
     const fetchSliders = async () =>{
         try{
-            const responce = await fetch('http://localhost:5000/api/carousels?page=services')
+            const responce = await fetch(`${API_URL}/api/carousels?page=services`)
             const data = await responce.json()
             setCarousels(data.carousels)
         }

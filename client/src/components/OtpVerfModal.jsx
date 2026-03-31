@@ -11,6 +11,8 @@ function OtpVerfModal({ isOpen, onClose, phoneNumber, country, onBack }) {
     const [showProfileModal, setShowProfileModal] = useState(false)
     const [verifiedUser, setVerifiedUser] = useState(null)
 
+    const API_URL = import.meta.env.VITE_API_URL
+
     if (!isOpen) return null
 
     const handleVerify = async (e) => {
@@ -25,7 +27,7 @@ function OtpVerfModal({ isOpen, onClose, phoneNumber, country, onBack }) {
         setError("")
         
         try {
-            const response = await fetch('http://localhost:5000/api/auth/verify-otp', {
+            const response = await fetch(`${API_URL}/api/auth/verify-otp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

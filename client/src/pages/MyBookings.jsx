@@ -9,6 +9,8 @@ function MyBookings() {
     const [loading, setLoading] = useState(true)
     const [filter, setFilter] = useState('all') // all, pending, confirmed, cancelled
 
+    const API_URL = import.meta.env.VITE_API_URL
+
     useEffect(() => {
         fetchBookings()
     }, [])
@@ -23,7 +25,7 @@ function MyBookings() {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/api/bookings/user/${user.id}`)
+            const response = await fetch(`${API_URL}/api/bookings/user/${user.id}`)
             const data = await response.json()
             setBookings(data.bookings)
         } catch (error) {
@@ -35,10 +37,10 @@ function MyBookings() {
 
     const getStatusBadge = (status) => {
         const badges = {
-            pending: { class: 'badge-pending', text: '⏳ Pending' },
-            confirmed: { class: 'badge-confirmed', text: '✓ Confirmed' },
-            cancelled: { class: 'badge-cancelled', text: '✕ Cancelled' },
-            completed: { class: 'badge-completed', text: '✓ Completed' }
+            pending: { class: 'badge-pending', text: ' Pending' },
+            confirmed: { class: 'badge-confirmed', text: ' Confirmed' },
+            cancelled: { class: 'badge-cancelled', text: ' Cancelled' },
+            completed: { class: 'badge-completed', text: ' Completed' }
         }
         return badges[status] || badges.pending
     }

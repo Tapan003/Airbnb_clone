@@ -9,6 +9,8 @@ function ProfileCompletionModal({ isOpen, onClose, user, onProfileComplete }) {
     const [errors, setErrors] = useState({})
     const [isSubmitting, setIsSubmitting] = useState(false)
 
+    const API_URL = import.meta.env.VITE_API_URL
+
     if (!isOpen) return null
 
     const validateForm = () => {
@@ -31,7 +33,7 @@ function ProfileCompletionModal({ isOpen, onClose, user, onProfileComplete }) {
 
         setIsSubmitting(true)
         try {
-            const response = await fetch('http://localhost:5000/api/auth/complete-profile', {
+            const response = await fetch(`${API_URL}/api/auth/complete-profile`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
