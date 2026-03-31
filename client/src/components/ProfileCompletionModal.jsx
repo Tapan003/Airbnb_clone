@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../css/ProfileCompletionModal.css'
+import '../css/profileCompletionModal.css'
 
 function ProfileCompletionModal({ isOpen, onClose, user, onProfileComplete }) {
     const [formData, setFormData] = useState({
