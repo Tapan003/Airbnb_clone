@@ -7,7 +7,7 @@ import HomeFooter from '../components/footers/HomeFooter'
 function Home() {
     const [carousels, setCarousels] = useState([])
     const [loading, setLoading] = useState(true)
-    const API_URL = process.env.REACT_APP_API_URL 
+    const API_URL = import.meta.env.VITE_API_URL 
 
     useEffect(() => {
         fetchCarousels()
