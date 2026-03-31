@@ -7,7 +7,7 @@ import HomeFooter from '../components/footers/HomeFooter'
 function Home() {
     const [carousels, setCarousels] = useState([])
     const [loading, setLoading] = useState(true)
-    const API_URL = process.env.API_URL || 'http://localhost:5000'
+    const API_URL = process.env.API_URL 
 
     useEffect(() => {
         fetchCarousels()
