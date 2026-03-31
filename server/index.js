@@ -17,7 +17,10 @@ const User = require('./models/Users')
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+//   origin: ["https://airbnb-clone-frontend-djbo.onrender.com", "http://localhost:3000"]
+}))
+
 app.use(express.json())
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))

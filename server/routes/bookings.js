@@ -115,7 +115,11 @@ router.get('/', async (req, res) => {
         }
 
         const bookings = await Booking.find(query)
-            .populate('listing', 'title mainImage location pricing')
+            .populate({
+                path: 'listing',
+                select: 'title location pricing images', 
+                options: { virtuals: true } 
+            })
             .populate('user', 'name phoneNumber email')
             .sort({ createdAt: -1 })
 

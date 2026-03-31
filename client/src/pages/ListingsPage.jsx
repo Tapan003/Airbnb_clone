@@ -5,6 +5,7 @@ import ProductNavbar from "../components/ProductPage/ProductNavbar"
 import ProductFooter from "../components/footers/ProductFooter"
 import Calendar from "../components/Calendar"
 import '../css/ProductPage/ListingsPage.css'
+import {loadStripe} from '@stripe/stripe-js';
 
 function ListingsPage() {
     const [loading, setLoading] = useState(true)
@@ -109,7 +110,7 @@ function ListingsPage() {
 
             alert("✓ Booking request sent! Waiting for host confirmation.")
 
-            // navigate('/my-bookings')
+            // navigate('/my-bookings')           
 
         } catch (error) {
             console.error("Error submitting booking:", error)
