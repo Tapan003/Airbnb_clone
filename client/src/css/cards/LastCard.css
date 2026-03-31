@@ -1,0 +1,105 @@
+.last-card {
+    flex: 0 0 auto;
+    width: 240px;
+    height: 240px;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: visible;
+    background: white;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.last-card-images {
+    position: relative;
+    width: 190px;
+    height: 160px;
+    margin-bottom: 24px;
+}
+
+.last-card-image {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 4px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform-origin: center center;
+}
+
+.image-1 {
+    left: 5px;
+    bottom: 0;
+    z-index: 3;
+}
+
+.last-card.visible .image-1 {
+    animation: popIn1 0.4s cubic-bezier(0.3, 1.5, 0.6, 1) forwards;
+}
+
+.image-2 {
+    left: 80px;
+    bottom: 20px;
+    z-index: 2;
+}
+
+.last-card.visible .image-2 {
+    animation: popIn2 0.4s 0.1s cubic-bezier(0.3, 1.5, 0.6, 1) forwards;
+}
+
+.image-3 {
+    left: 20px;
+    bottom: 40px;
+    z-index: 1;
+}
+
+.last-card.visible .image-3 {
+    animation: popIn3 0.4s 0.2s cubic-bezier(0.3, 1.5, 0.6, 1) forwards;
+}
+
+@keyframes popIn1 {
+    from {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(-10deg) scale(1);
+    }
+}
+
+@keyframes popIn2 {
+    from {
+        opacity: 0;
+        transform: rotate(8deg) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(8deg) scale(1);
+    }
+}
+
+@keyframes popIn3 {
+    from {
+        opacity: 0;
+        transform: rotate(-8deg) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(-8deg) scale(1);
+    }
+}
+
+.last-card-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+}

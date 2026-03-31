@@ -1,0 +1,357 @@
+.page-wrapper {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.listing-header h2 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.listing-subheader {
+    font-size: 14px;
+    text-decoration: underline;
+    margin-bottom: 24px;
+}
+
+.gallery-grid {
+    display: flex;
+    gap: 8px;
+    height: 500px; 
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 48px;
+}
+
+.main-image {
+    display:flex
+}
+
+.main-image img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.sub-images {
+    flex: 1; 
+    display: grid;
+    grid-template-columns: 250px 250px;
+    grid-template-rows: 250px 250px;
+    gap: 8px;
+}
+
+.sub-images img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.content-layout {
+    display: flex;
+    gap: 80px;
+    position: relative; 
+}
+
+.listing-details {
+    flex: 2; 
+}
+
+.sidebar {
+    flex: 1; 
+    position: relative;
+}
+
+.basic-amenities {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #DDDDDD;
+    margin: 32px 0;
+}
+
+.booking-card {
+    position: sticky;
+    top: 150px; 
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.booking-card-header {
+    margin-bottom: 24px;
+    font-size: 22px;
+}
+
+.booking-inputs {
+    border: 1px solid #B0B0B0;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.dates-input {
+    display: flex;
+    border-bottom: 1px solid #B0B0B0;
+}
+
+.check-in, .check-out {
+    flex: 1;
+    padding: 12px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.check-in { border-right: 1px solid #B0B0B0; }
+
+.guests-input {
+    padding: 12px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.reserve-btn {
+    width: 100%;
+    background-color: #e51d53;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.charge-notice {
+    text-align: center;
+    font-size: 14px;
+    color: #717171;
+}
+
+.dates-input .label, .guests-input .label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 4px;
+}
+
+.guest-select {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+.night-text {
+    font-weight: normal;
+    font-size: 16px;
+    color: #222;
+}
+
+.price-breakdown {
+    margin-top: 16px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #222;
+    font-size: 16px;
+}
+
+.price-row span:first-child {
+    text-decoration: underline;
+}
+
+.divider-small {
+    border: none;
+    border-top: 1px solid #DDDDDD;
+    margin: 16px 0;
+}
+
+.price-row.total {
+    font-weight: bold;
+}
+
+.price-row.total span:first-child {
+    text-decoration: none;
+}
+
+.booking-inputs {
+    border: 1px solid #B0B0B0;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    position: relative; 
+}
+
+.dates-input-container, .guests-input-container {
+    position: relative;
+}
+
+.dates-input, .guests-input {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dates-input:hover, .guests-input:hover {
+    background-color: #f7f7f7;
+}
+
+.guests-input {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 12px;
+}
+
+.value-text {
+    font-size: 14px;
+    color: #222;
+}
+
+.dropdown-arrow {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    transition: transform 0.3s;
+}
+.dropdown-arrow.up { transform: translateY(-50%) rotate(180deg); }
+
+.floating-popover {
+    position: absolute;
+    right: -1px;
+    top: calc(100% + 12px); 
+    background: white;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+    padding: 24px;
+    z-index: 100;
+    border: 1px solid #DDDDDD;
+}
+
+.calendar-popover {
+    width: 320px; 
+}
+
+.guest-popover {
+    width: 100%; 
+}
+
+.popover-header h4 {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+.popover-header p {
+    color: #717171;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.popover-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+.popover-footer-right {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.text-btn {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+}
+.text-btn-bold {
+    background: none;
+    border: none;
+    font-weight: 800;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.solid-btn-small {
+    background: #222;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.guest-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.guest-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+}
+.guest-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #717171;
+}
+
+.guest-counter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.round-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #B0B0B0;
+    background: white;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #717171;
+}
+.round-btn:hover:not(:disabled) {
+    border-color: #222;
+    color: #222;
+}
+.round-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.max-guests-note {
+    font-size: 12px;
+    color: #717171;
+    margin-top: 16px;
+}
+
+.booking-card, 
+.sidebar, 
+.booking-inputs, 
+.dates-input-container {
+    overflow: visible !important; 
+}

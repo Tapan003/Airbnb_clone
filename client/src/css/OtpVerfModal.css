@@ -1,0 +1,134 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 568px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1001;
+    animation: slideUp 0.3s ease;
+    padding-bottom: 24px;
+}
+
+.otp-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1002;
+    animation: fadeIn 0.2s ease;
+}
+
+.otp-modal-container {
+    z-index: 1003;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 568px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+    padding-bottom: 24px;
+    border: 1px solid #b0b0b0
+}
+
+.otp-content {
+    padding: 32px 24px;
+}
+
+.back-button {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.otp-instruction {
+    text-align: left;
+    font-size: 16px;
+    color: #222;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.otp-input-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+}
+
+.otp-input-box {
+    width: 42px !important;
+    height: 52px !important;
+    margin-right: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid #b0b0b0;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.otp-input-box:focus {
+    border-color: #222;
+    border-width: 2px;
+}
+
+.otp-separator {
+    margin: 0 4px;
+    color: #b0b0b0;
+}
+
+.error-message {
+    background: #fff0f0;
+    border: 1px solid #ff385c;
+    color: #c13515;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.different-option {
+    margin-bottom: 24px;
+}
+
+.different-option a {
+    color: #222;
+    font-size: 14px;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.different-option a:hover {
+    color: #000;
+}
+
+.otp-modal-container .conbtn {
+    opacity: 1;
+}
+
+.otp-modal-container .conbtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

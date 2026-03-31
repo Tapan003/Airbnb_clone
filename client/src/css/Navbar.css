@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 40px;
+    border-bottom: 1px solid #ebebeb;
+    background: #f7f7f7;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    position: relative;
+}
+
+.airbnb-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding-top: 8px;
+    flex-shrink: 0;
+    width: 200px;
+    align-self: flex-start;  
+    
+}
+
+.logo-img {
+    height: 120px;
+    width: auto;
+    display: block;
+    margin-top: -40px;
+}
+
+.center-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    max-width: 850px;
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 8px;
+}
+
+.nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #717171;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 22px;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.nav-tab:hover {
+    color: #222;
+}
+
+.nav-tab:hover .tab-icon {
+    transform: scale(1.15);
+}
+
+.tab-icon {
+    width: 32px;
+    height: 32px;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.nav-tab.active .tab-icon {
+    opacity: 1;
+}
+
+.tab-text {
+    white-space: nowrap;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+    padding: 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease;
+    width: 100%;
+    max-width: 850px;
+}
+
+.search-bar:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background ease;
+    border-radius: 32px;
+    flex: 1;
+    text-align: left;
+}
+
+.search-section:hover {
+    background: #ebebeb;
+}
+
+.search-section.where {
+    flex: 1.5;
+}
+
+.search-section.who {
+    flex: 1.2;
+    display:flex;
+}
+
+.who-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.search-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.search-placeholder {
+    font-size: 14px;
+    color: #717171;
+    font-weight: 400;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #222;
+    width: 100%;
+    font-family: inherit;
+}
+
+.search-input::placeholder {
+    color: #717171;
+}
+
+.search-divider {
+    width: 1px;
+    height: 24px;
+    background: #ddd;
+}
+
+.search-button {
+    background: linear-gradient(90deg, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    flex-shrink: 0;
+}
+
+.search-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.right-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+    width: 200px;
+    align-self: flex-start;
+}
+
+.become-host-link {
+    color: #222;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: 22px;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.become-host-link:hover {
+    background: #ededed;
+}
+
+.globe-button {
+    background: #ededed;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+}
+
+.globe-button:hover {
+    background: #e3e3e3;
+}
+
+.globe-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.menu-button {
+    background: #ededed;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+}
+
+.menu-button:hover {
+    background: #e3e3e3;
+}
+
+.menu-icon {
+    width: 18px;
+    height: 18px;
+}
+
+button {
+    font-family: inherit;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid #222;
+    outline-offset: 2px;
+}

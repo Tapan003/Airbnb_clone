@@ -1,0 +1,125 @@
+.card1link a {
+    width: 240px;
+    height: 230px;
+}
+
+
+.card1 {
+    flex: 0 0 auto;
+    width: 240px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.card1-image-container {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    margin-bottom: 12px;
+}
+
+.card1-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.guest-favorite-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: white;
+    padding: 6px 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+.guest-favorite-badge span {
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    color: #222;
+}
+
+.heart-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    background: transparent; 
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    z-index: 2;
+    padding: 0;
+}
+
+.heart-button:hover {
+    transform: scale(1.15);
+}
+
+.heart-button:active {
+    transform: scale(0.95);
+}
+
+.heart-button svg {
+    width: 24px;
+    height: 24px;
+    fill: rgba(0, 0, 0, 0.5); 
+    stroke: white;
+    stroke-width: 2;
+    transition: fill 0.2s ease;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));  
+}
+
+.heart-button.favorited svg {
+    fill: #FF385C;
+    stroke: #FF385C;
+}
+
+.card1-content {
+    padding: 0 4px;
+}
+
+.card1-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: #222;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card1-details {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #717171;
+}
+
+.card1-description {
+    color: #717171;
+    font-weight: 500;
+}
+
+.card1-separator {
+    color: #717171;
+}
+
+.card1-star-icon {
+    color: #717171;
+    font-size: 12px;
+}
+
+.card1-rating {
+    color: #717171;
+    font-weight: 500;
+}

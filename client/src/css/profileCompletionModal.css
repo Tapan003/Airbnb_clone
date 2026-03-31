@@ -1,0 +1,123 @@
+.profile-backdrop {
+    z-index: 1004;
+}
+
+.profile-modal-container {
+    z-index: 1005;
+    max-width: 480px;
+}
+
+.profile-content {
+    padding: 24px;
+}
+
+.profile-instruction {
+    text-align: center;
+    font-size: 16px;
+    color: #222;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #222;
+    box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.1);
+}
+
+.form-group input.error-input {
+    border-color: #c13515;
+}
+
+.error-text {
+    display: block;
+    color: #c13515;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.submit-error {
+    background: #FEE;
+    border: 1px solid #c13515;
+    color: #c13515;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn-skip {
+    flex: 1;
+    padding: 14px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #717171;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-skip:hover {
+    background: #f7f7f7;
+    color: #222;
+}
+
+.btn-complete {
+    flex: 2;
+    padding: 14px;
+    background: linear-gradient(90deg, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-complete:hover {
+    opacity: 0.9;
+}
+
+.btn-complete:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.privacy-note {
+    text-align: center;
+    font-size: 12px;
+    color: #717171;
+    margin-top: 20px;
+    line-height: 1.4;
+}

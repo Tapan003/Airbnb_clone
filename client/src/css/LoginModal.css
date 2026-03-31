@@ -1,0 +1,244 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(213, 10, 10, 0.6);
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 568px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1001;
+    animation: slideUp 0.3s ease;
+    padding-bottom: 24px;
+}
+
+.topnav {
+    width: 100%;
+    margin: 0;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 24px 16px 16px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.close {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.close:hover {
+    background-color: #f0f0f0;
+}
+
+.title {
+    font-family: "Airbnb Cereal VF", Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    font-size: 22px;
+    margin: 24px auto 24px auto;
+    width: calc(100% - 48px);
+    max-width: 100%;
+    font-weight: 600;
+    padding: 0 24px;
+}
+
+.initialinfo {
+    width: calc(100% - 48px);
+    margin: 0 auto 16px auto;
+}
+
+.selectCountry {
+    width: 100%;
+    height: 56px;
+    border: 1px solid #b0b0b0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: black;
+    padding: 8px 12px;
+}
+
+.phcountry {
+    color: #222;
+    font-size: 10px;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    padding: 0;
+}
+
+#country {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    font-family: inherit;
+    background: transparent;
+}
+
+.selectphoneNumber {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    border: 1px solid #b0b0b0;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#phone {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    margin: 0;
+    padding: 12px;
+    font-family: inherit;
+}
+
+.continueButton {
+    width: calc(100% - 48px);
+    margin: 16px auto;
+}
+
+.conbtn {
+    width: 100%;
+    height: 48px;
+    color: white;
+    background: linear-gradient(90deg, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: "Airbnb Cereal VF", Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    transition: opacity 0.2s ease;
+}
+
+.conbtn:hover {
+    opacity: 0.9;
+}
+
+p {
+    text-align: left;
+    width: calc(100% - 48px);
+    margin: 16px auto;
+    font-size: 12px !important;
+    font-family: sans-serif;
+    color: #222;
+    line-height: 1.5;
+    white-space: wrap !important;
+}
+
+p a {
+    color: #222;
+    text-decoration: underline;
+}
+
+.seperator {
+    width: calc(100% - 48px);
+    margin: 24px auto;
+    text-align: center;
+}
+
+h6 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    line-height: 0.1em;
+    margin: 0;
+    font-size: 12px;
+    color: #717171;
+}
+
+h6 span {
+    background: #fff;
+    padding: 0 10px;
+    text-transform: lowercase;
+}
+
+.altLogins {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: calc(100% - 48px);
+    margin: 0 auto;
+}
+
+.gbtn, .abtn, .ebtn, .fbtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 48px;
+    border: 1px solid #222;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: "Airbnb Cereal VF", Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    transition: background 0.2s ease;
+    padding: 0 12px;
+}
+
+.gbtn:hover, .abtn:hover, .ebtn:hover, .fbtn:hover {
+    background-color: #f7f7f7;
+}
+
+.gbtn span, .abtn span, .ebtn span, .fbtn span {
+    flex: 1;
+    text-align: center;
+}
+
+.btnimg {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
