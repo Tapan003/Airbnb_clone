@@ -10,6 +10,7 @@ const userRoutes = require('./routes/users')
 const uploadRoutes = require('./routes/upload')
 const simpleUploadRoutes = require('./routes/simpleUpload')
 const bookings = require('./routes/bookings')
+const paymentRoutes = require('./routes/payment')
 const multer =require('multer')
 
 
@@ -31,6 +32,7 @@ app.use('/api/listings', listingRoutes)
 app.use('/api/simple-upload', simpleUploadRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/bookings', bookings)
+app.use('/api/payment', paymentRoutes)
 
 
 // app.use('/api/upload', uploadRoutes)
