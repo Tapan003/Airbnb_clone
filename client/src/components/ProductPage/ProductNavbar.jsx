@@ -22,8 +22,15 @@ function ProductNavbar() {
         alert('Logged out successfully!')
     }
 
+    const refreshUserState = () => {
+        const storedUser = localStorage.getItem('user')
+        if (storedUser) {
+            setUser(JSON.parse(storedUser))
+        }
+    }
+
     const openLoginModal = () => setIsLoginModalOpen(true)
-    const closeLoginModal = () => setIsLoginModalOpen(false)
+    const closeLoginModal = () => {setIsLoginModalOpen(false); refreshUserState()}
     return (
         <>
             <header className="header"  style={{display: 'flex', alignItems: 'center'}} >
