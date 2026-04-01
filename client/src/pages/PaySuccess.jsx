@@ -7,6 +7,7 @@ function PaymentSuccess() {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(true)
     const [verified, setVerified] = useState(false)
+    const API_URL = import.meta.env.VITE_API_URL
 
     useEffect(() => {
         verifyPayment()
@@ -23,7 +24,7 @@ function PaymentSuccess() {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/payment/verify-payment', {
+            const response = await fetch(`${API_URL}/api/payment/verify-payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
