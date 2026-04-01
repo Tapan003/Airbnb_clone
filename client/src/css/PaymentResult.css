@@ -80,12 +80,15 @@
 .btn-primary {
     background: linear-gradient(90deg, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
     color: white;
+    height: 48px;
+
 }
 
 .btn-secondary {
     background: white;
     color: #222;
     border: 1px solid #ddd;
+    height: 48px;
 }
 
 .payment-loading {
