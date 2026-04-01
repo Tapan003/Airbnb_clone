@@ -16,6 +16,7 @@ function ManageListings() {
     const home = carousels.filter(carousel => carousel.page === 'home')
     const exp = carousels.filter(carousel => carousel.page === 'experiences')
     const services = carousels.filter(carousel => carousel.page === 'services')
+    const API_URL = import.meta.env.VITE_API_URL
     
     // new slider form
     const [showNewCarouselForm, setShowNewCarouselForm] = useState(false)
@@ -38,11 +39,11 @@ function ManageListings() {
         setLoading(true)
         try {
             // fetch listings
-            const listingsRes = await fetch('http://localhost:5000/api/listings')
+            const listingsRes = await fetch(`${API_URL}/api/listings`)
             const listingsData = await listingsRes.json()
             setListings(listingsData.listings)
             // fetch carousels
-            const carouselsRes = await fetch('http://localhost:5000/api/carousels')
+            const carouselsRes = await fetch(`${API_URL}/api/carousels`)
             const carouselsData = await carouselsRes.json()
             setCarousels(carouselsData.carousels)
         } catch (error) {
@@ -55,7 +56,7 @@ function ManageListings() {
     const handleCreateCarousel = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch('http://localhost:5000/api/carousels', {
+            const response = await fetch(`${API_URL}/api/carousels`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -87,7 +88,7 @@ function ManageListings() {
     const handleUpdateCarousel = async (e) => {
     e.preventDefault()
     try {
-        const response = await fetch(`http://localhost:5000/api/carousels/${editingCarousel.id}`, {
+        const response = await fetch(`${API_URL}/api/carousels/${editingCarousel.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -134,7 +135,7 @@ const handleEditClick = (carousel) => {
 
         try {
             const response = await fetch(
-                `http://localhost:5000/api/carousels/${selectedCarousel}/listings/${listingId}`,
+                `${API_URL}/api/carousels/${selectedCarousel}/listings/${listingId}`,
                 { method: 'POST' }
             )
             if (response.ok) {
@@ -171,7 +172,7 @@ const handleEditClick = (carousel) => {
         e.preventDefault()
 
         try {
-            const response = await fetch(`http://localhost:5000/api/listings/${editingListing.id}`, {
+            const response = await fetch(`${API_URL}/api/listings/${editingListing.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -215,7 +216,7 @@ const handleEditClick = (carousel) => {
     const handleRemoveListingFromCarousel = async (carouselId, listingId) => {
         try {
             const response = await fetch(
-                `http://localhost:5000/api/carousels/${carouselId}/listings/${listingId}`,
+                `${API_URL}/api/carousels/${carouselId}/listings/${listingId}`,
                 { method: 'DELETE' }
             )
 
@@ -234,7 +235,7 @@ const handleEditClick = (carousel) => {
         if (!confirm('Are you sure you want to delete this listing?')) return
 
         try {
-            const response = await fetch(`http://localhost:5000/api/listings/${listingId}`, {
+            const response = await fetch(`${API_URL}/api/listings/${listingId}`, {
                 method: 'DELETE'
             })
             if (response.ok) {
@@ -252,7 +253,7 @@ const handleEditClick = (carousel) => {
         if (!confirm('Are you sure you want to delete this carousel?')) return
 
         try {
-            const response = await fetch(`http://localhost:5000/api/carousels/${carouselId}`, {
+            const response = await fetch(`${API_URL}/api/carousels/${carouselId}`, {
                 method: 'DELETE'
             })
             if (response.ok) {

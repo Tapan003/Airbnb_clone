@@ -15,7 +15,7 @@ function ManageBookings() {
 
     const fetchBookings = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/bookings')
+            const response = await fetch(`${API_URL}/api/bookings`)
             const data = await response.json()
             setBookings(data.bookings)
         } catch (error) {
@@ -33,7 +33,7 @@ function ManageBookings() {
         if (!confirm(confirmMessage)) return
 
         try {
-            const response = await fetch(`http://localhost:5000/api/bookings/${bookingId}/status`, {
+            const response = await fetch(`${API_URL}/api/bookings/${bookingId}/status`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ function ManageBookings() {
         if (!confirm('Are you sure you want to delete this booking? This cannot be undone.')) return
 
         try {
-            const response = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
+            const response = await fetch(`${API_URL}/api/bookings/${bookingId}`, {
                 method: 'DELETE'
             })
 

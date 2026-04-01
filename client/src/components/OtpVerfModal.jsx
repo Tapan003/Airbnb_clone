@@ -78,7 +78,7 @@ function OtpVerfModal({ isOpen, onClose, phoneNumber, country, onBack }) {
             <div className="modal-container otp-modal-container">
                 <div className="topnav">
                     <button className="close back-button" onClick={onBack} type="button">
-                        ←
+                        
                     </button>
                     Confirm your number
                     <button className="close" onClick={onClose} type="button">×</button>

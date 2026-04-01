@@ -126,9 +126,17 @@
 
 .otp-modal-container .conbtn {
     opacity: 1;
+    margin: 10px;
 }
 
 .otp-modal-container .conbtn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.otp-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
 }

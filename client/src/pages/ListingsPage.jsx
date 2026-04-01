@@ -70,13 +70,10 @@ function ListingsPage() {
     const currencySym = listing.pricing?.currency === 'INR' ? '₹' : '$';
 
     const handleSubmit = async () => {
-        // user log in check
         const user = JSON.parse(localStorage.getItem('user') || 'null')
         
         if (!user || !user.id) {
             alert("Please log in to make a booking.")
-            //open login modal or redirect to login here
-            navigate('/')
             return
         }
 
@@ -86,13 +83,13 @@ function ListingsPage() {
         }
 
         try {
-            const response = await fetch(`${API_URL}/api/bookings`, {
+            const bookingResponse = await fetch(`${API_URL}/api/bookings`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    userId: user.id, 
+                    userId: user.id,
                     listing: listing._id,
                     checkIn: checkIn.toISOString(),
                     checkOut: checkOut.toISOString(),
@@ -101,14 +98,33 @@ function ListingsPage() {
                 })
             })
 
-            const data = await response.json()
+            const bookingData = await bookingResponse.json()
 
-            if (!response.ok) {
-                alert(data.message || "Failed to create booking.")
+            if (!bookingResponse.ok) {
+                alert(bookingData.message || "Failed to create booking.")
                 return
             }
 
-            alert("✓ Booking request sent! Waiting for host confirmation.")
+            const paymentResponse = await fetch(`${API_URL}/api/payment/create-checkout-session`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    bookingId: bookingData.booking._id
+                })
+            })
+    
+            const paymentData = await paymentResponse.json()
+
+            if (!paymentResponse.ok) {
+                alert("Failed to initialize payment. Please try again.")
+                return
+            }
+
+            window.location.href = paymentData.url
+
+            alert(" Booking request sent! Waiting for host confirmation.")
 
             // navigate('/my-bookings')           
 

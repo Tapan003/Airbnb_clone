@@ -1,5 +1,5 @@
 import '../../css/ProductPage/ProductNavbar.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import images from '../../assets/images'
 import { Link } from 'react-router-dom'
 import MenuDropdown from '../MenuDropdown'
@@ -7,6 +7,20 @@ import LoginModal from '../LoginModal'
 
 function ProductNavbar() {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+            const storedUser = localStorage.getItem('user')
+            if (storedUser) {
+                setUser(JSON.parse(storedUser))
+            }
+    }, [])
+
+    const handleLogout = () => {
+        localStorage.removeItem('user')
+        setUser(null)
+        alert('Logged out successfully!')
+    }
 
     const openLoginModal = () => setIsLoginModalOpen(true)
     const closeLoginModal = () => setIsLoginModalOpen(false)
@@ -45,7 +59,16 @@ function ProductNavbar() {
                     <button className="globe-button">
                         <img src={images.globeIcon} alt="Globe" className="globe-icon"/>
                     </button>
-                    <MenuDropdown onLoginClick={openLoginModal} />
+                    {user ? (
+                        <div className="user-menu">
+                            <MenuDropdown 
+                                user={user} 
+                                onLogout={handleLogout}
+                            />
+                        </div>
+                    ) : (
+                        <MenuDropdown onLoginClick={openLoginModal} />
+                    )}
                 </div>
             </header>
               <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />

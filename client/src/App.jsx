@@ -12,6 +12,8 @@ import ManageUsers from "./pages/admin/ManageUsers.jsx"
 import ManageListings from "./pages/admin/ManageListings.jsx"
 import ManageBookings from "./pages/admin/ManageBookings.jsx"
 import ProtectedRoute from "./components/ProtectedRoutes.jsx"
+import PaymentSuccess from "./pages/PaySuccess.jsx"
+import PaymentCancelled from "./pages/PayCancel.jsx"
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/become-host" element={<BecomeHost />} />
           <Route path="/listing/:id" element={<ListingsPage />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-cancelled" element={<PaymentCancelled />} />
           <Route 
             path="/my-bookings" 
             element={
@@ -32,7 +36,7 @@ function App() {
               </ProtectedRoute>
             } 
           />
-          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminLogin />} />
           <Route 
           path="/admin-dashboard" 
           element={

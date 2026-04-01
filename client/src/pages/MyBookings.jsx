@@ -63,7 +63,6 @@ function MyBookings() {
                 </button>
             </div>
 
-            {/* Filter Tabs */}
             <div className="booking-filters">
                 <button 
                     className={filter === 'all' ? 'active' : ''}
@@ -91,7 +90,6 @@ function MyBookings() {
                 </button>
             </div>
 
-            {/* Bookings List */}
             <div className="bookings-grid">
                 {filteredBookings.length > 0 ? (
                     filteredBookings.map(booking => {
@@ -111,7 +109,7 @@ function MyBookings() {
                                 <div className="booking-info">
                                     <h3>{booking.listing.title}</h3>
                                     <p className="location">
-                                        📍 {booking.listing.location.city}, {booking.listing.location.country}
+                                         {booking.listing.location.city}, {booking.listing.location.country}
                                     </p>
                                     
                                     <div className="booking-dates">
@@ -126,8 +124,8 @@ function MyBookings() {
                                     </div>
 
                                     <div className="booking-details">
-                                        <p>👥 {booking.guests} guest{booking.guests > 1 ? 's' : ''}</p>
-                                        <p>🌙 {booking.pricing.nights} night{booking.pricing.nights > 1 ? 's' : ''}</p>
+                                        <p>{booking.guests} guest{booking.guests > 1 ? 's' : ''}</p>
+                                        <p>{booking.pricing.nights} night{booking.pricing.nights > 1 ? 's' : ''}</p>
                                     </div>
 
                                     <div className="booking-price">

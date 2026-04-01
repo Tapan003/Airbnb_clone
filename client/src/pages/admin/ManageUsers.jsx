@@ -9,6 +9,7 @@ function ManageUsers() {
     const [showEditUserForm, setShowEditUserForm] = useState(false)
     const [editingUser, setEditingUser] = useState(null)
     const [searchQuery, setSearchQuery] = useState('')
+    const API_URL = import.meta.env.VITE_API_URL
 
     useEffect(() => {
         fetchData()
@@ -18,7 +19,7 @@ function ManageUsers() {
         setLoading(true)
         try {
             // Fetch users from the correct endpoint
-            const usersRes = await fetch('http://localhost:5000/api/users')
+            const usersRes = await fetch(`${API_URL}/api/users`)
             const usersData = await usersRes.json()
             //console.log(usersData)
             setUsers(usersData.users)
@@ -33,7 +34,7 @@ function ManageUsers() {
         if (!confirm(`Are you sure you want to delete user ${phoneNumber}?`)) return
 
         try {
-            const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+            const response = await fetch(`${API_URL}/api/users/${userId}`, {
                 method: 'DELETE'
             })
 
@@ -66,7 +67,7 @@ function ManageUsers() {
         e.preventDefault()
 
         try {
-            const response = await fetch(`http://localhost:5000/api/users/${editingUser.id}`, {
+            const response = await fetch(`${API_URL}/api/users/${editingUser.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

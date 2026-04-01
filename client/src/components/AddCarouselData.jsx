@@ -12,7 +12,7 @@ function AddCarouselData() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch('http://localhost:5000/add-carousel-data', {
+            const response = await fetch(`${API_URL}/add-carousel-data`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

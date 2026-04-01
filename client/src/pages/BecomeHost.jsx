@@ -167,7 +167,6 @@ function BecomeHost() {
         setIsSubmitting(true)
 
         try {
-            // Get logged-in user
             const user = JSON.parse(localStorage.getItem('user') || '{}')
             
             // if (!user.id) {

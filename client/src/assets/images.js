@@ -1,4 +1,4 @@
-import logo from './airbnb.png'
+
 import houseTabIcon from './house_tab.png'
 import balloonTabIcon from './hot-air-balloon_tab.png'
 import deskBellTabIcon from './desk_bell_tab.png'
@@ -13,7 +13,6 @@ import twitterIcon from './icons8-twitter-50.png'
 import instagramIcon from './icons8-instagram-logo-50.png'
 
 const images = {
-    logo,
     houseTabIcon,
     balloonTabIcon,
     deskBellTabIcon,

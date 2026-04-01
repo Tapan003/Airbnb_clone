@@ -54,6 +54,7 @@ function LoginModal({ isOpen, onClose }) {
 
     const handleOtpClose = () => {
         setIsOtpModalOpen(false)
+        onClose()
     }
 
     const handleBackToLogin = () => {
