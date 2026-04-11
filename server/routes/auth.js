@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/Users')
+const { sendOTPEmail } = require('../services/emailService')
 
 function generateOTP() {
     return Math.floor(100000 + Math.random() * 900000).toString()
@@ -25,20 +26,43 @@ router.post('/send-otp', async (req, res) => {
         }
 
         const otp = generateOTP()
+        const otpCreatedAt = new Date()
+        const expiryDate = new Date(otpCreatedAt.getTime() + 10 * 60 * 1000)
+
+        const expiryTimeFormatted = expiryDate.toLocaleTimeString('en-IN', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        })
+
         let user = await User.findOne({ phoneNumber })
         
         if (user) {
             user.otp = otp
-            user.otpCreatedAt = new Date()
-            user.country = country || user.country
+            user.otpCreatedAt = otpCreatedAt,
+            user.country = country || 'India'
             await user.save()
         } else{
             user = await User.create({
                 phoneNumber,
                 country: country || 'India',
                 otp,
-                otpCreatedAt: new Date()
+                otpCreatedAt: otpCreatedAt
             })
+        }
+
+        if (user.email) {
+            const emailResult = await sendOTPEmail({
+                email: user.email,
+                otp: otp,
+                expiryTime: expiryTimeFormatted  
+            })
+            
+            if (emailResult.success) {
+                console.log(`✓ OTP email sent to ${user.email}`)
+            } else {
+                console.log(`✗ Failed to send email, but OTP generated`)
+            }
         }
 
         console.log(` OTP for ${phoneNumber}: ${otp}`)
@@ -90,7 +114,7 @@ router.post('/verify-otp', async (req, res) => {
                 phoneNumber: user.phoneNumber,
                 country: user.country,
                 isVerified: user.isVerified,
-                isProfileComplete: user.isProfileComplete,  // ADD THIS
+                isProfileComplete: user.isProfileComplete,  
                 name: user.name,
                 email: user.email
             }

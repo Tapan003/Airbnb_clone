@@ -2,14 +2,16 @@ const express = require('express')
 const router = express.Router()
 const stripe = require('stripe')(process.env.VITE_STRIPE_SECRET_KEY)
 const Booking = require('../models/Bookings')
+const { sendBookingConfirmationEmail } = require('../services/emailService')
+const { format } = require('date-fns')
 const Listing = require('../models/Listings')
 
-// Create Stripe Checkout Session
+
 router.post('/create-checkout-session', async (req, res) => {
     try {
         const { bookingId } = req.body
 
-        // Get booking details
+        
         const booking = await Booking.findById(bookingId)
             .populate('listing', 'title mainImage images')
             .populate('user', 'email phoneNumber')
@@ -18,24 +20,22 @@ router.post('/create-checkout-session', async (req, res) => {
             return res.status(404).json({ message: 'Booking not found' })
         }
 
-        // Get listing image
         const listingImage = booking.listing.images?.find(img => img.isMain)?.url || 
                            booking.listing.images?.[0]?.url || 
                            'https://via.placeholder.com/300'
 
-        // Create Stripe checkout session
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: [
                 {
                     price_data: {
-                        currency: 'inr', // Indian Rupees
+                        currency: 'inr', 
                         product_data: {
                             name: booking.listing.title,
                             description: `${booking.pricing.nights} night${booking.pricing.nights > 1 ? 's' : ''} • ${booking.guests} guest${booking.guests > 1 ? 's' : ''}`,
                             images: [listingImage],
                         },
-                        unit_amount: Math.round(booking.pricing.totalPrice * 100), // Stripe uses smallest currency unit (paise)
+                        unit_amount: Math.round(booking.pricing.totalPrice * 100), 
                     },
                     quantity: 1,
                 },
@@ -62,16 +62,13 @@ router.post('/create-checkout-session', async (req, res) => {
     }
 })
 
-// Verify payment and update booking
 router.post('/verify-payment', async (req, res) => {
     try {
         const { sessionId, bookingId } = req.body
 
-        // Retrieve session from Stripe
         const session = await stripe.checkout.sessions.retrieve(sessionId)
 
         if (session.payment_status === 'paid') {
-            // Update booking status and payment status
             const booking = await Booking.findByIdAndUpdate(
                 bookingId,
                 {
@@ -79,7 +76,23 @@ router.post('/verify-payment', async (req, res) => {
                     status: 'confirmed'
                 },
                 { new: true }
-            ).populate('listing', 'title').populate('user', 'name email')
+            ).populate('listing', 'title location', ).populate('user', 'name email')
+
+            if (booking.user.email) {
+                await sendBookingConfirmationEmail({
+                    email: booking.user.email,
+                    userName: booking.user.name || booking.user.phoneNumber,
+                    listingTitle: booking.listing.title,
+                    listingLocation: `${booking.listing.location.city}, ${booking.listing.location.country}`,
+                    checkInDate: format(new Date(booking.checkIn), 'MMM dd, yyyy'),
+                    checkOutDate: format(new Date(booking.checkOut), 'MMM dd, yyyy'),
+                    guests: booking.guests,
+                    nights: booking.pricing.nights,
+                    totalPrice: booking.pricing.totalPrice,
+                    bookingId: booking._id,
+                    bookingUrl: `${process.env.FRONTEND_URL}/my-bookings`
+                })
+            }
 
             res.json({
                 success: true,
