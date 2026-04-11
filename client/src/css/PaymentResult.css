@@ -56,6 +56,7 @@
 
 .booking-info {
     background: #f7f7f7;
+    width: 100%;
     padding: 16px;
     border-radius: 8px;
     margin: 24px 0;
@@ -77,18 +78,27 @@
     border: none;
 }
 
-.btn-primary {
+.btn-primary_suc {
+    padding: 12px 24px;
     background: linear-gradient(90deg, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
     color: white;
-    height: 48px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
 
 }
 
-.btn-secondary {
-    background: white;
-    color: #222;
+.btn-secondary_suc {
+    padding: 8px 16px;
+    background: #f7f7f7;
     border: 1px solid #ddd;
-    height: 48px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
 .payment-loading {

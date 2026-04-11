@@ -83,7 +83,7 @@
     color: #222;
 }
 
-.btn-primary {
+.btn-primary_listings {
     padding: 12px 24px;
     background: linear-gradient(90deg, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
     color: white;
@@ -98,7 +98,7 @@
     opacity: 0.9;
 }
 
-.btn-secondary {
+.btn-secondary_listings {
     padding: 8px 16px;
     background: #f7f7f7;
     border: 1px solid #ddd;

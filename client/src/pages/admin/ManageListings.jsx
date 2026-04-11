@@ -303,7 +303,7 @@ const handleEditClick = (carousel) => {
                 <div className="admin-content">
                     <div className="content-header">
                         <h2>All Listings</h2>
-                        <button onClick={() => navigate('/become-host')} className="btn-primary">
+                        <button onClick={() => navigate('/become-host')} className="btn-primary_listings">
                             + New Listing
                         </button>
                     </div>
@@ -344,7 +344,7 @@ const handleEditClick = (carousel) => {
                                     ) : (
                                         <button 
                                             onClick={() => setSelectedCarousel(carousels[0]?.id)}
-                                            className="btn-secondary"
+                                            className="btn-secondary_listings"
                                             disabled={carousels.length === 0}
                                         >
                                             Select Slider
@@ -352,7 +352,7 @@ const handleEditClick = (carousel) => {
                                     )}
                                     <button
                                         onClick={() => handleEditListingClick(listing)}
-                                        className='btn-secondary'
+                                        className='btn-secondary_listings'
                                     >
                                         Edit
                                     </button>

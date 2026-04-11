@@ -63,13 +63,13 @@ function PaymentSuccess() {
                 </p>
                 <div className="action-buttons">
                     <button 
-                        className="btn-primary"
+                        className="btn-primary_suc"
                         onClick={() => navigate('/my-bookings')}
                     >
                         View My Bookings
                     </button>
                     <button 
-                        className="btn-secondary"
+                        className="btn-secondary_suc"
                         onClick={() => navigate('/')}
                     >
                         Back to Home

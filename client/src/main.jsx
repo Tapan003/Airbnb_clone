@@ -5,9 +5,9 @@ import App from './App.jsx'
 import { StripeProvider } from './contexts/StripeContexts.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  
     <StripeProvider>
       <App />
     </StripeProvider>
-  </StrictMode>,
+  
 )
