@@ -11,7 +11,7 @@ function MenuDropdown({ onLoginClick, user, onLogout }) {
 
     return (
         <>
-        {/*  */}
+        
         <div className="menu-dropdown-container">
             <button className="menu-button" onClick={toggleMenu}>
                 <img src={images.menuIcon} alt="Menu" className="hamburger-icon"/>

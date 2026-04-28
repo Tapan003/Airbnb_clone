@@ -226,6 +226,24 @@ h6 span {
     object-fit: contain;
 }
 
+.selectEmail {
+    border-top: 1px solid #ddd;
+    padding-top: 12px;
+}
+
+.selectEmail input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.selectEmail input:focus {
+    outline: none;
+    border-color: #222;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

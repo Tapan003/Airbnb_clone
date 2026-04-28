@@ -6,7 +6,7 @@ function AdminDashBoard() {
 
     const handleLogout = () => {        
         localStorage.removeItem('adminAuth')
-        navigate('/admin-login')
+        navigate('/admin')
     }
 
     const handleUsers = () => {
@@ -20,6 +20,11 @@ function AdminDashBoard() {
     const handleBookings = () => {
         navigate('/manage-bookings')
     }
+
+    const handleAnalytics = () => {
+        navigate('/analytics')
+    }
+
     return (
         <div>
             <div>
@@ -37,7 +42,7 @@ function AdminDashBoard() {
 
                         <button className="admin-action-button" onClick={handleBookings}>Manage Bookings</button>
                         {/* placeholder for future analytics page */}
-                        <button className="admin-action-button">View Analytics</button>
+                        <button className="admin-action-button" onClick={handleAnalytics}>View Analytics</button>
                     </div>
                 </div>
             </div>

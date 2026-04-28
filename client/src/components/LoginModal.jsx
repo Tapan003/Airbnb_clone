@@ -8,6 +8,7 @@ function LoginModal({ isOpen, onClose }) {
     if (!isOpen) return null
 
     const [phoneNumber, setPhoneNumber] = useState('')
+    const [email, setEmail] = useState('')
     const [country, setCountry] = useState('India')
     const [isOtpModalOpen, setIsOtpModalOpen] = useState(false)
     const API_URL = import.meta.env.VITE_API_URL
@@ -34,6 +35,7 @@ function LoginModal({ isOpen, onClose }) {
             },
             body: JSON.stringify({
                 phoneNumber,
+                email,
                 country
             })
         })
@@ -94,6 +96,11 @@ function LoginModal({ isOpen, onClose }) {
                         <div className="selectphoneNumber">
                             <div>
                              <input type="tel" maxLength={10} minLength={10} id="phone" name="phone" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required/>
+                            </div>
+                        </div>
+                        <div className="selectEmail">
+                            <div>
+                                <input type="email" id="email" name="email" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} required />
                             </div>
                         </div>
                     </div>

@@ -11,7 +11,7 @@ function AdminLogin() {
     const HandleSubmit = (e) => {
         e.preventDefault()
         if (username === 'admin' && password === 'password') {
-            
+            localStorage.removeItem('user')
             localStorage.setItem('adminAuth', 'true')
             navigate('/admin-dashboard')
             alert('Login successful!')

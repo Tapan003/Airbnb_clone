@@ -228,7 +228,7 @@ function BecomeHost() {
 
             if (response.ok) {
                 alert('Listing created successfully! An admin will review it soon.')
-                navigate('/ManageListings')
+                navigate('/manage-listings')
             } else {
                 alert(data.message || 'Failed to create listing')
             }
@@ -469,7 +469,7 @@ function BecomeHost() {
                                                                 formData_upload.append('image', file)
                                                             
                                                                 try {
-                                                                    const response = await fetch('http://localhost:5000/api/upload/image', {
+                                                                    const response = await fetch(`${API}/api/upload/image`, {
                                                                         method: 'POST',
                                                                         body: formData_upload
                                                                     })

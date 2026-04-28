@@ -14,6 +14,7 @@ import ManageBookings from "./pages/admin/ManageBookings.jsx"
 import ProtectedRoute from "./components/ProtectedRoutes.jsx"
 import PaymentSuccess from "./pages/PaySuccess.jsx"
 import PaymentCancelled from "./pages/PayCancel.jsx"
+import Analytics from "./pages/admin/Analytics.jsx"
 
 function App() {
   return (
@@ -66,6 +67,14 @@ function App() {
           element={
             <ProtectedRoute requireAdmin={true}>
               <ManageBookings />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/analytics" 
+          element={
+            <ProtectedRoute requireAdmin={true}>
+              <Analytics />
             </ProtectedRoute>
           } 
         />

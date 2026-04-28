@@ -6,6 +6,7 @@ import ProductFooter from "../components/footers/ProductFooter"
 import Calendar from "../components/Calendar"
 import '../css/ProductPage/ListingsPage.css'
 import {loadStripe} from '@stripe/stripe-js';
+import ListingMap from "../components/ProductPage/ListingMap"
 
 function ListingsPage() {
     const [loading, setLoading] = useState(true)
@@ -65,8 +66,9 @@ function ListingsPage() {
     const nights = (checkIn && checkOut) ? differenceInDays(checkOut, checkIn) : 0;
     const basePriceTotal = nights * (listing.pricing?.basePrice || 0);
     const cleaningFee = listing.pricing?.cleaningFee || 0;
-    const serviceFee = listing.pricing?.serviceFee || 0;
-    const totalPrice = basePriceTotal > 0 ? basePriceTotal + cleaningFee + serviceFee : 0;
+    const serviceFee = listing.pricing?.basePrice ? Math.round(basePriceTotal * 0.02) : 0;
+    const tax = listing.pricing?.basePrice ? Math.round((basePriceTotal + cleaningFee + serviceFee) * 0.18) : 0;
+    const totalPrice = basePriceTotal > 0 ? basePriceTotal + cleaningFee + serviceFee + tax : 0;
     const currencySym = listing.pricing?.currency === 'INR' ? '₹' : '$';
 
     const handleSubmit = async () => {
@@ -104,6 +106,7 @@ function ListingsPage() {
                 alert(bookingData.message || "Failed to create booking.")
                 return
             }
+            console.log("Booking created:", bookingData)
 
             const paymentResponse = await fetch(`${API_URL}/api/payment/create-checkout-session`, {
                 method: 'POST',
@@ -177,6 +180,14 @@ function ListingsPage() {
                         <div className="calendar-section">
                             <h3>{nights > 0 ? `${nights} nights in ${listing.location.city}` : 'Select check-in date'}</h3>
                             <Calendar checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} />
+                        </div>
+                        <div className="map-section" style={{ padding: '48px 0' }}>
+                            <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '16px' }}>Where you'll be</h3>
+                            <p style={{ color: '#717171', marginBottom: '24px' }}>
+                                {listing.location.city}, {listing.location.country}
+                            </p>
+
+                            <ListingMap location={listing.location} />
                         </div>
                     </div>
 
@@ -267,9 +278,13 @@ function ListingsPage() {
                                         <span>Airbnb service fee</span>
                                         <span>{currencySym}{serviceFee}</span>
                                     </div>
+                                    <div className="price-row">
+                                        <span>Tax (18%)</span>
+                                        <span>{currencySym}{tax}</span>
+                                    </div>
                                     <hr className="divider-small" />
                                     <div className="price-row total">
-                                        <span>Total before taxes</span>
+                                        <span>Total</span>
                                         <span>{currencySym}{totalPrice}</span>
                                     </div>
                                 </div>

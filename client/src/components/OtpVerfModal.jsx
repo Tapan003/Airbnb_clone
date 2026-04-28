@@ -3,7 +3,7 @@ import OtpInput from "react-otp-input"
 import ProfileCompletionModal from "./ProfileCompletionModal"
 import "../css/OtpVerfModal.css"
 
-function OtpVerfModal({ isOpen, onClose, phoneNumber, country, onBack }) {
+function OtpVerfModal({ isOpen, onClose, phoneNumber, email, country, onBack }) {
     const [otp, setOtp] = useState("")
     const [isVerifying, setIsVerifying] = useState(false)
     const [error, setError] = useState("")
@@ -34,6 +34,7 @@ function OtpVerfModal({ isOpen, onClose, phoneNumber, country, onBack }) {
                 },
                 body: JSON.stringify({
                     phoneNumber,
+                    email,
                     otp
                 })
             })
@@ -48,6 +49,7 @@ function OtpVerfModal({ isOpen, onClose, phoneNumber, country, onBack }) {
                     setShowProfileModal(true)
                     
                 } else {
+                    localStorage.removeItem('adminAuth')
                     localStorage.setItem('user', JSON.stringify(data.user))
                     alert('Logged in successfully!')
                     onClose()
@@ -86,7 +88,7 @@ function OtpVerfModal({ isOpen, onClose, phoneNumber, country, onBack }) {
                 
                 <div className="otp-content">
                     <p className="otp-instruction">
-                        Enter the code we've sent via SMS to {phoneNumber}:
+                        Enter the code we've sent via email to {email}:
                     </p>
                     
                     <form onSubmit={handleVerify}>

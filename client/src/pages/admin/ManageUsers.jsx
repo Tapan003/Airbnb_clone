@@ -18,7 +18,6 @@ function ManageUsers() {
     const fetchData = async () => {
         setLoading(true)
         try {
-            // Fetch users from the correct endpoint
             const usersRes = await fetch(`${API_URL}/api/users`)
             const usersData = await usersRes.json()
             //console.log(usersData)

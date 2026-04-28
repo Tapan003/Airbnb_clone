@@ -385,7 +385,7 @@ const handleEditClick = (carousel) => {
                         <h2>All Slider</h2>
                         <button 
                             onClick={() => setShowNewCarouselForm(true)} 
-                            className="btn-primary"
+                            className="btn-primary_listings"
                         >
                             + New Slider
                         </button>
