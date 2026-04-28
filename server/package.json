@@ -21,7 +21,9 @@
     "express": "^5.2.1",
     "mongoose": "^9.2.1",
     "multer": "^2.0.2",
+    "nodemailer": "^8.0.5",
     "nodemon": "^3.1.11",
+    "pdfkit": "^0.18.0",
     "stripe": "^21.0.1"
   }
 }

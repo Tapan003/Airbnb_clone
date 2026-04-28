@@ -55,6 +55,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const listingData = req.body
+        // {/*console.log(listingData)*/}
 
         // validation
         if (!listingData.title || !listingData.owner) {
@@ -62,6 +63,20 @@ router.post('/', async (req, res) => {
                 message: 'Title and owner are required' 
             })
         }
+
+        if (listingData.location) {
+            const { address, city, country } = listingData.location;
+            const coords = await geocodeAddress(address, city, country);
+
+            // 2. If the API found coordinates, attach them to the schema object
+            if (coords) {
+                listingData.location.coordinates = {
+                    lat: coords.lat,
+                    lng: coords.lng
+                };
+            }
+        }
+
         const listing = await Listing.create(listingData)
         res.status(201).json({ 
             message: 'Listing created successfully',
@@ -76,11 +91,24 @@ router.post('/', async (req, res) => {
 // update listing
 router.put('/:id', async (req, res) => {
     try {
+        const updateData = req.body;
+        if (updateData.location) {
+            const { address, city, country } = updateData.location;
+            if (address || city || country) {
+                const coords = await geocodeAddress(address, city, country);
+                if (coords) {
+                    updateData.location.coordinates = {
+                        lat: coords.lat,
+                        lng: coords.lng
+                    };
+                }
+            }
+        }
         const listing = await Listing.findByIdAndUpdate(
             req.params.id,
-            req.body,
-            { returnDocument: 'after', runValidators: true }
-        )
+            updateData, 
+            { new: true, runValidators: true } 
+        );
         if (!listing) {
             return res.status(404).json({ message: 'Listing not found' })
         }

@@ -88,7 +88,11 @@ router.post('/verify-payment', async (req, res) => {
                     checkOutDate: format(new Date(booking.checkOut), 'MMM dd, yyyy'),
                     guests: booking.guests,
                     nights: booking.pricing.nights,
+                    basePrice: booking.pricing.basePrice,
+                    cleaningFee: booking.pricing.cleaningFee,
+                    serviceFee: booking.pricing.serviceFee,
                     totalPrice: booking.pricing.totalPrice,
+                    tax: booking.pricing.tax,
                     bookingId: booking._id,
                     bookingUrl: `${process.env.FRONTEND_URL}/my-bookings`
                 })

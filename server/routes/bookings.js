@@ -50,8 +50,9 @@ router.post('/', async (req, res) => {
         const nights = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))
         const basePrice = listingDoc.pricing.basePrice * nights
         const cleaningFee = listingDoc.pricing.cleaningFee || 0
-        const serviceFee = Math.round(basePrice * 0.10) 
-        const calculatedTotal = basePrice + cleaningFee + serviceFee
+        const serviceFee = Math.round(basePrice * 0.02) 
+        const tax = Math.round(basePrice * 0.18)
+        const calculatedTotal = basePrice + cleaningFee + serviceFee + tax
 
         const booking = await Booking.create({
             user: userId,
@@ -64,7 +65,8 @@ router.post('/', async (req, res) => {
                 nights,
                 cleaningFee,
                 serviceFee,
-                totalPrice: calculatedTotal
+                totalPrice: calculatedTotal,
+                tax,
             },
             status: 'pending'
         })
@@ -181,5 +183,36 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: 'Failed to delete booking' })
     }
 })
+
+// Cancel a booking
+router.put('/:id/cancel', async (req, res) => {
+    try {
+        const bookingId = req.params.id;
+        
+        // Find the booking
+        const booking = await Booking.findById(bookingId);
+        
+        if (!booking) {
+            return res.status(404).json({ message: 'Booking not found' });
+        }
+
+        // Optional: Ensure the user cancelling is the one who made the booking
+        // if (booking.user.toString() !== req.body.userId) {
+        //     return res.status(403).json({ message: 'Not authorized to cancel this booking' });
+        // }
+
+        if (booking.status !== 'pending') {
+            return res.status(400).json({ message: 'Only pending bookings can be cancelled by the user.' });
+        }
+
+        booking.status = 'cancelled';
+        await booking.save();
+
+        res.json({ message: 'Booking cancelled successfully', booking });
+    } catch (error) {
+        console.error('Cancel booking error:', error);
+        res.status(500).json({ message: 'Failed to cancel booking' });
+    }
+});
 
 module.exports = router

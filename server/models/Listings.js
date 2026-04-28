@@ -20,10 +20,10 @@ const listingSchema = new mongoose.Schema({
         state: String,
         country: String,
         address: String,
-        // coordinates: {
-        //     lat: Number,
-        //     lng: Number
-        // }
+        coordinates: {
+            lat: Number,
+            lng: Number
+        }
     }, 
     images: [{
         url: String,

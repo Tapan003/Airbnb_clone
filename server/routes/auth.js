@@ -19,10 +19,19 @@ router.get('/', async (req,res) => {
 
 router.post('/send-otp', async (req, res) => {
     try {
-        const { phoneNumber, country } = req.body
+        const { phoneNumber, email, country } = req.body
 
         if (!phoneNumber) {
             return res.status(400).json({ message: 'Phone number is required' })
+        }
+
+        if (!email) {
+            return res.status(400).json({ message: 'Email is required' })
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({ message: 'Invalid email format' })
         }
 
         const otp = generateOTP()
@@ -40,11 +49,13 @@ router.post('/send-otp', async (req, res) => {
         if (user) {
             user.otp = otp
             user.otpCreatedAt = otpCreatedAt,
+            user.email = email
             user.country = country || 'India'
             await user.save()
         } else{
             user = await User.create({
                 phoneNumber,
+                email,
                 country: country || 'India',
                 otp,
                 otpCreatedAt: otpCreatedAt
@@ -59,9 +70,9 @@ router.post('/send-otp', async (req, res) => {
             })
             
             if (emailResult.success) {
-                console.log(`✓ OTP email sent to ${user.email}`)
+                console.log(` OTP email sent to ${user.email}`)
             } else {
-                console.log(`✗ Failed to send email, but OTP generated`)
+                console.log(` Failed to send email, but OTP generated`)
             }
         }
 

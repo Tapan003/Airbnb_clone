@@ -32,7 +32,8 @@ const BookingSchema = new mongoose.Schema({
         nights: { type: Number, required: true },
         cleaningFee: { type: Number, default: 0 },
         serviceFee: { type: Number, default: 0 },
-        totalPrice: { type: Number, required: true }
+        totalPrice: { type: Number, required: true },
+        tax: { type: Number, default: 0 }
     },
 
     status: {
