@@ -8,6 +8,7 @@ function ManageBookings() {
     const [bookings, setBookings] = useState([])
     const [loading, setLoading] = useState(true)
     const [filter, setFilter] = useState('all')
+    const API_URL = import.meta.env.VITE_API_URL
 
     useEffect(() => {
         fetchBookings()
