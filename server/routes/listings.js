@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Listing = require('../models/Listings')
 const fs = require('fs').promises
+const { geocodeAddress } = require('../services/geocoder')
 
 // list all listings
 router.get('/', async (req, res) => {
