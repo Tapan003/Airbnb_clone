@@ -214,9 +214,12 @@ async function sendBookingConfirmationEmail(bookingData) {
                 .logo { font-size: 32px; font-weight: bold; color: #E61E4D; }
                 .success-badge { background: #00A699; color: white; padding: 10px 20px; border-radius: 20px; display: inline-block; margin: 20px 0; }
                 .details { background: #f7f7f7; padding: 20px; border-radius: 8px; margin: 20px 0; }
-                .detail-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e0e0e0; }
+                .detail-row { padding: 10px 0; border-bottom: 1px solid #e0e0e0; }
+                .detail-label {color: #717171;}
+                .detail-value {display: block !important;text-align:right;font-weight: 600;}
                 .total { font-size: 24px; font-weight: bold; color: #E61E4D; text-align: center; margin: 20px 0; }
                 .footer { text-align: center; padding-top: 20px; border-top: 1px solid #ddd; color: #717171; font-size: 12px; }
+                table{border-collapse: collapse;width: 100% !important;}
             </style>
         </head>
         <body>
@@ -226,29 +229,31 @@ async function sendBookingConfirmationEmail(bookingData) {
                     <div class="success-badge">✓ Booking Confirmed</div>
                 </div>
                 
-                <h2>Hi ${bookingData.userName}!</h2>
+                <h2>Hi ${bookingData.userName}! </h2>
                 <p>Great news! Your payment was successful and your booking is confirmed.</p>
                 
                 <div class="details">
                     <h3>${bookingData.listingTitle}</h3>
                     <p style="color: #717171;">${bookingData.listingLocation}</p>
                     
-                    <div class="detail-row">
-                        <span>Check-in</span>
-                        <strong>${bookingData.checkInDate}</strong>
-                    </div>
-                    <div class="detail-row">
-                        <span>Check-out</span>
-                        <strong>${bookingData.checkOutDate}</strong>
-                    </div>
-                    <div class="detail-row">
-                        <span>Guests</span>
-                        <strong>${bookingData.guests} guest(s)</strong>
-                    </div>
-                    <div class="detail-row">
-                        <span>Nights</span>
-                        <strong>${bookingData.nights} night(s)</strong>
-                    </div>
+                    <table >
+                      <tr class="detail-row">
+                        <td class="detail-label">Check-in</td>
+                        <td class="detail-value" >${bookingData.checkInDate}</td>
+                      </tr>
+                      <tr class="detail-row">
+                        <td class="detail-label">Check-out</td>
+                        <td class="detail-value" >${bookingData.checkOutDate}</td>
+                      </tr>
+                      <tr class="detail-row">
+                        <td class="detail-label">Guests</td>
+                        <td class="detail-value" >${bookingData.guests} guest(s)</td>
+                      </tr>
+                      <tr class="detail-row">
+                        <td class="detail-label">Nights</td>
+                        <td class="detail-value" >${bookingData.nights} night(s)</td>
+                      </tr>
+                    </table>
                 </div>
                 
                 <div class="total">
