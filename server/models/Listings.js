@@ -91,11 +91,6 @@ const listingSchema = new mongoose.Schema({
     toObject: { virtuals: true }  
 })
 
-// get main image to display in the frontend
-// listingSchema.virtual('mainImage').get(function() {
-//     const mainImg = this.images.find(img => img.isMain)
-//     return mainImg ? mainImg.url : (this.images[0]?.url || '')
-// })
 listingSchema.virtual('mainImage').get(function() {
     if (!this.images || this.images.length === 0) {
         return 'https://via.placeholder.com/300x300?text=No+Image' // placeholder if image is not loading

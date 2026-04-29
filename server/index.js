@@ -34,25 +34,6 @@ app.use('/api/users', userRoutes)
 app.use('/api/bookings', bookings)
 app.use('/api/payment', paymentRoutes)
 
-
-// app.use('/api/upload', uploadRoutes)
-
-// const storage = multer.diskStorage({
-//     destination: function(req, file, cb) {
-//     return cb(null, "./public/Images")
-//     },
-//     filename: function (req, file, cb) {
-//     return cb(null, `${Date.now()}_${file.originalname}`)
-//     }
-// })
-
-// const upload = multer({storage})
-
-// app.post('/upload',upload.single('file'), (req,res)=>{
-//     console.log(req.body)
-
-// })
-
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected'))
     .catch((err) => console.error('MongoDB connection error:', err))

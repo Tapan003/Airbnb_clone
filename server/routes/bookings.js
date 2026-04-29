@@ -189,17 +189,11 @@ router.put('/:id/cancel', async (req, res) => {
     try {
         const bookingId = req.params.id;
         
-        // Find the booking
         const booking = await Booking.findById(bookingId);
         
         if (!booking) {
             return res.status(404).json({ message: 'Booking not found' });
         }
-
-        // Optional: Ensure the user cancelling is the one who made the booking
-        // if (booking.user.toString() !== req.body.userId) {
-        //     return res.status(403).json({ message: 'Not authorized to cancel this booking' });
-        // }
 
         if (booking.status !== 'pending') {
             return res.status(400).json({ message: 'Only pending bookings can be cancelled by the user.' });
