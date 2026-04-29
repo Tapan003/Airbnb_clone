@@ -168,7 +168,7 @@ function ManageBookings() {
                         const badge = getStatusBadge(booking.status)
                         return (
                             <div key={booking._id} className="booking-row">
-                                {console.log(booking)}
+                                {/* {console.log(booking)} */}
                                 <div className="booking-left">
                                     <img 
                                         src={booking.listing.mainImage} 
