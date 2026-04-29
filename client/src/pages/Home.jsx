@@ -1,7 +1,6 @@
 import '../css/Home.css'
 import { useEffect, useState } from 'react'
 import Carousel1 from '../components/Carousel1'
-import { CarouselsData } from '../data/HomeCarouselData'
 import HomeFooter from '../components/footers/HomeFooter'
 
 function Home() {
@@ -10,14 +9,13 @@ function Home() {
     const API_URL = import.meta.env.VITE_API_URL 
 
     useEffect(() => {
-        fetchCarousels()
+        fetchData()
     }, [])
 
-    const fetchCarousels = async () => {
+    const fetchData = async () => {
         try {
             const response = await fetch(`${API_URL}/api/carousels?page=home`)
             const data = await response.json()
-            {/*console.log(data)*/}
             setCarousels(data.carousels)
         } catch (error) {
             console.error('Failed to fetch carousels:', error)

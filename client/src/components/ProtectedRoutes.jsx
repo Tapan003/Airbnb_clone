@@ -6,7 +6,7 @@ function ProtectedRoute({ children, requireAdmin = false }) {
         
         if (!isAdminLoggedIn || isAdminLoggedIn !== 'true') {
             alert('Please log in as admin to access this page')
-            return <Navigate to="/admin-login" replace />
+            return <Navigate to="/admin" replace />
         }
         
         return children

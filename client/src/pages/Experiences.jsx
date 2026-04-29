@@ -58,7 +58,6 @@ function Experiences() {
         //     ))}
         // </div>
         <div>
-            <h1>Exp Page</h1>
             {carousels.map(carousel =>(
                 <Carousel1
                     key={carousel.id}

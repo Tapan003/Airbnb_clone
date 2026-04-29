@@ -30,7 +30,6 @@ function Services() {
     }
     return (
         <div>
-            <h1>Services page</h1>
             {carousels.map(carousel => (
                 <Carousel1 
                     key={carousel.id}
