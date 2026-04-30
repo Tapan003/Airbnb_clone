@@ -1,13 +1,11 @@
 import Map, { Marker, NavigationControl } from 'react-map-gl/maplibre';
-import 'maplibre-gl/dist/maplibre-gl.css'; // CRITICAL: This makes the map render correctly
+import 'maplibre-gl/dist/maplibre-gl.css'; 
 
 function ListingMap({ location }) {
-    // We safely extract coordinates, or fallback to a default location (12.87 N, 74.88 E) if they are missing
     const lat = location?.coordinates?.lat || 12.8700;
     const lng = location?.coordinates?.lng || 74.8800;
 
     return (
-        // Using Tailwind for the container styling
         <div className="w-full h-[480px] rounded-xl overflow-hidden border border-border mt-4">
             <Map
                 initialViewState={{
@@ -15,9 +13,8 @@ function ListingMap({ location }) {
                     latitude: lat,
                     zoom: 13
                 }}
-                // This is a free, clean basemap style from CartoDB
                 mapStyle="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
-                scrollZoom={false} // Airbnb disables scroll-to-zoom initially so it doesn't trap the user's page scroll
+                scrollZoom={false}
             >
                 {/* The Custom Map Pin */}
                 <Marker longitude={lng} latitude={lat} anchor="bottom">
