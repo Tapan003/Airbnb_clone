@@ -218,4 +218,48 @@ router.get('/me', async (req, res) => {
     }
 })
 
+// Admin Login Route
+router.post('/admin-login', async (req, res) => {
+    try {
+        const { username, password } = req.body
+
+        // Note: In the future, you should move "admin" and "password" to your .env file!
+        if (username === 'admin' && password === 'password') {
+            
+            // 1. Look for an existing admin profile in the database
+            let admin = await User.findOne({ role: 'admin' })
+            
+            // 2. If it's the very first time logging in, create the Admin profile!
+            if (!admin) {
+                admin = await User.create({
+                    phoneNumber: '0000000000', // Dummy phone number so it passes your schema requirement
+                    name: 'Super Admin',
+                    country: 'System',
+                    isVerified: true,
+                    isProfileComplete: true,
+                    role: 'admin'
+                })
+            }
+
+            // 3. Return the admin data just like a normal user login
+            res.status(200).json({
+                message: 'Admin login successful',
+                user: {
+                    id: admin._id, // <-- Here is the magic _id you need for your listings!
+                    phoneNumber: admin.phoneNumber,
+                    name: admin.name,
+                    role: admin.role,
+                    isVerified: admin.isVerified,
+                    isProfileComplete: admin.isProfileComplete
+                }
+            })
+        } else {
+            res.status(401).json({ message: 'Invalid admin credentials' })
+        }
+    } catch (error) {
+        console.error('Admin login error:', error)
+        res.status(500).json({ message: 'Failed to process admin login' })
+    }
+})
+
 module.exports = router
